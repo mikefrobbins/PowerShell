@@ -1,7 +1,9 @@
-﻿function Get-MrParameterAlias {
+﻿#Requires -Version 3.0
+function Get-MrParameterAlias {
 
     [CmdletBinding()]
     param (
+        [Parameter(Mandatory)]
         [string]$Name
     )
 
