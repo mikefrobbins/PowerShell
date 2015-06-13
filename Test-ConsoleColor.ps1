@@ -79,7 +79,7 @@ function Test-ConsoleColor {
             Write-Verbose -Message "Foreground Color is: $FGColor"
             Write-Verbose -Message "Background Color is $BGColor"
 
-            Get-LoremIpsum -Length $Length
+            Get-LoremIpsum -Length $Paragraphs
             Start-Sleep -Milliseconds $Milliseconds
         }
     }
