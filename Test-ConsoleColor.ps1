@@ -50,7 +50,7 @@ function Test-ConsoleColor {
     [CmdletBinding()]
     param (
         [ValidateNotNullOrEmpty()]
-        [string[]]$Color = [Enum]::GetValues([System.ConsoleColor]),
+        [System.ConsoleColor[]]$Color = [System.Enum]::GetValues([System.ConsoleColor]),
         
         [ValidateNotNullOrEmpty()]
         [int]$Paragraphs = 5,
