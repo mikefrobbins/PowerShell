@@ -36,7 +36,7 @@ function Test-ConsoleColor {
      Test-ConsoleColor -Color Red, Green, Blue -Paragraphs 7 -Milliseconds 300
  
 .INPUTS
-    String
+    None
  
 .OUTPUTS
     None
