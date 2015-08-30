@@ -7,7 +7,7 @@ function Get-MrADLockOutInfo {
   
 .DESCRIPTION 
     Get-MrADLockOutInfo is an advanced function that returns a list of users who were locked out in Active Directory 
-by querying the event logs on the PDC emulation in the domain. 
+    by querying the event logs on the PDC emulation in the domain. 
   
 .PARAMETER UserName 
     The userid of the specific user you are looking for lockouts for. The default is all locked out users. 
@@ -16,7 +16,8 @@ by querying the event logs on the PDC emulation in the domain.
     The datetime to start searching from. The default is all datetimes that exist in the event logs.
 
 .PARAMETER Credential
-    SQL Authentication userid and password in the form of a credential object.
+    Specifies a user account that has permission to read the security event log on the PDC emulator in the forest root
+    domain. The default is the current user.
   
 .EXAMPLE 
     Get-MrADLockOutInfo 
