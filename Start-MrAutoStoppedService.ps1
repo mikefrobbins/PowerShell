@@ -10,8 +10,9 @@ function Start-MrAutoStoppedService {
     Start-MrAutoStoppedService is a function that starts services on the specified
     remote computer(s) that are set to start automatically, are not currently running,
     and it excludes the services that are set to start automatically with a delayed
-    startup. This function is compatible to PowerShell version 2 and requires
-    PowerShell remoting to be enabled on the remote computer.
+    startup. This function requires PowerShell version 3 or higher on the machine it
+    is being run from, PowerShell version 2 or higher on the remote machine that it is
+    being run against, and PowerShell remoting to be enabled on the remote computer.
  
 .PARAMETER ComputerName
     The remote computer(s) to check the status and start the services on.
@@ -21,7 +22,7 @@ function Start-MrAutoStoppedService {
     is the current user.
 
 .PARAMETER PassThru
-    Returns an object representing the service. By default, this function  does not
+    Returns an object representing the service. By default, this function does not
     generate any output.
      
 .EXAMPLE
