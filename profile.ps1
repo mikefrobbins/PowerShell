@@ -12,7 +12,7 @@ if (-not($Error[0])) {
 
     function prompt {
 
-        if (-not (Get-GitDirectory)) {
+        if (-not(Get-GitDirectory)) {
             "PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) "   
         }
         else {
