@@ -1,10 +1,11 @@
-Set-Location -Path $env:SystemDrive\
+﻿Set-Location -Path $env:SystemDrive\
 Clear-Host
 
 $Error.Clear()
 Import-Module -Name posh-git -ErrorAction SilentlyContinue
 
 if (-not($Error[0])) {
+    $DefaultTitle = $Host.UI.RawUI.WindowTitle
     $GitPromptSettings.BeforeText = '('
     $GitPromptSettings.BeforeForegroundColor = [ConsoleColor]::Cyan
     $GitPromptSettings.AfterText = ')'
@@ -13,6 +14,7 @@ if (-not($Error[0])) {
     function prompt {
 
         if (-not(Get-GitDirectory)) {
+            $Host.UI.RawUI.WindowTitle = $DefaultTitle
             "PS $($executionContext.SessionState.Path.CurrentLocation)$('>' * ($nestedPromptLevel + 1)) "   
         }
         else {
