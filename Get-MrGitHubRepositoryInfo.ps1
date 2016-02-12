@@ -1,6 +1,7 @@
 ﻿function Get-MrGitHubRepositoryInfo {
 
     [CmdletBinding()]
+    [OutputType('Mr.RepositoryInfo')]
     param (
         [Parameter(Mandatory)]
         [string[]]$UserName,
@@ -37,7 +38,7 @@
                 Created = $j.created_at -as [datetime]               
                 Updated = $j.updated_at -as [datetime]
                 Pushed = $j.pushed_at -as [datetime]
-
+                PSTypeName = 'Mr.RepositoryInfo'
             }
         
         }
