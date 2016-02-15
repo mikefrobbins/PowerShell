@@ -18,8 +18,7 @@ function Get-MrGitStatus {
         throw "Origin not setup for Git '$Repository' repository"
     }
     
-    
-    if (-not(Test-NetConnection -ComputerName $originURL -Port 443 -InformationLevel Quiet)) {     
+    if ((Invoke-WebRequest -Uri $($originURL)).StatusCode -ne 200) {     
         Write-Warning -Message 'An unexpected error has occured'
     }
     else {        
