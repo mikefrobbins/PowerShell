@@ -6,13 +6,15 @@
         [int]$Count = 1
     )
     
+    if ($Count -gt $Error.Count) {
+        $Count = $Error.Count
+    }
+
     for ($i = 0; $i -lt $Count; $i++) {
 
-        if ($Error[$i]) {
-            [PSCustomObject]@{
-                ErrorNumber = "`$Error[$i]"
-                ExceptionType = if ($Error[$i].exception) {$Error[$i].Exception.GetType().FullName}
-            }
+        [PSCustomObject]@{
+            ErrorNumber = "`$Error[$i]"
+            ExceptionType = if ($Error[$i].exception) {$Error[$i].Exception.GetType().FullName}
         }
 
     }
