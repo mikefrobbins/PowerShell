@@ -1,9 +1,12 @@
 ﻿#Requires -Version 4.0 -Modules Posh-Git
 function Update-MrGitRepository {
-    [CmdletBinding()]
+
+    [CmdletBinding(SupportsShouldProcess,
+                   ConfirmImpact='Medium')]
     param ()
 
     $Location = Get-Location
+
     if (Get-GitDirectory) {
         $Repository = Split-Path -Path (git.exe rev-parse --show-toplevel) -Leaf
     }
@@ -18,8 +21,8 @@ function Update-MrGitRepository {
         throw "Origin not setup for Git '$Repository' repository"
     }    
     
-    if ((Invoke-WebRequest -Uri $($originURL)).StatusCode -ne 200) {     
-        Write-Warning -Message 'An unexpected error has occured'
+    if ((Invoke-WebRequest -Uri $($originURL) -TimeoutSec 15).StatusCode -ne 200) {     
+        Write-Warning -Message "Unable to communicate with remote origin '$originURL'"
     }
     else {        
         $currentBranch = git.exe symbolic-ref --short HEAD
@@ -27,8 +30,16 @@ function Update-MrGitRepository {
         $remoteCommit = (git.exe ls-remote origin $currentBranch) -replace '\s.*$'
         
         if ($localCommit -ne $remoteCommit){
-            git.exe fetch
+
+            if ($PSCmdlet.ShouldProcess($currentBranch,'Fetch')) {
+                git.exe fetch
+            }
+
+        }
+        else {
+            "Local '$currentBranch' branch of the '$Repository' repository is already up-to-date with '$originURL'."
         }
 
     }
+
 }
