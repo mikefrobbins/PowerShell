@@ -12,7 +12,7 @@
         })]
         [string]$Path = (Get-Location),
 
-        [string]$Exclude = 'profile.ps1',
+        [string]$Exclude = '*profile.ps1',
 
         [switch]$Recurse
     )
