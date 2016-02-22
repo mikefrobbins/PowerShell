@@ -3,42 +3,50 @@
 function Test-MrFunctionsToExport {
     [CmdletBinding()]
     param (
+        [Parameter(ValueFromPipeline)]
         [ValidateScript({
             Test-ModuleManifest -Path $_
         })]
-        [string]$ManifestPath
+        [string[]]$ManifestPath
     )
     
-    $ModuleInfo = Import-Module -Name $ManifestPath -Force -PassThru
+    PROCESS {
+        foreach ($Manifest in $ManifestPath) {
 
-    $PS1FileNames = Get-ChildItem -Path "$($ModuleInfo.ModuleBase)\*.ps1" -Exclude *tests.ps1, *profile.ps1 |
-                    Select-Object -ExpandProperty BaseName
+            $ModuleInfo = Import-Module -Name $Manifest -Force -PassThru
 
-    $ExportedFunctions = Get-Command -Module $ModuleInfo.RootModule |
-                         Select-Object -ExpandProperty Name
+            $PS1FileNames = Get-ChildItem -Path "$($ModuleInfo.ModuleBase)\*.ps1" -Exclude *tests.ps1, *profile.ps1 |
+                            Select-Object -ExpandProperty BaseName
 
-    Describe 'FunctionsToExport' {
+            $ExportedFunctions = Get-Command -Module $ModuleInfo.Name |
+                                 Select-Object -ExpandProperty Name
 
-        It 'Exports one function in the module manifest per PS1 file' {
-            $ModuleInfo.ExportedFunctions.Values.Name.Count |
-            Should Be $PS1FileNames.Count
-        }
+            Describe "FunctionsToExport for PowerShell module '$($ModuleInfo.Name)'" {
 
-        It 'Exports functions with names that match the PS1 file base names' {
-            Compare-Object -ReferenceObject $ModuleInfo.ExportedFunctions.Values.Name -DifferenceObject $PS1FileNames |
-            Should BeNullOrEmpty
-        }
+                It 'Exports one function in the module manifest per PS1 file' {
+                    $ModuleInfo.ExportedFunctions.Values.Name.Count |
+                    Should Be $PS1FileNames.Count
+                }
 
-        It 'Only exports functions listed in the module manifest' {
-            $ExportedFunctions.Count |
-            Should Be $ModuleInfo.ExportedFunctions.Values.Name.Count
-        }
+                It 'Exports functions with names that match the PS1 file base names' {
+                    Compare-Object -ReferenceObject $ModuleInfo.ExportedFunctions.Values.Name -DifferenceObject $PS1FileNames |
+                    Should BeNullOrEmpty
+                }
 
-        It 'Contains the same function names as base file names' {
-            Compare-Object -ReferenceObject $PS1FileNames -DifferenceObject $ExportedFunctions |
-            Should BeNullOrEmpty
-        }
+                It 'Only exports functions listed in the module manifest' {
+                    $ExportedFunctions.Count |
+                    Should Be $ModuleInfo.ExportedFunctions.Values.Name.Count
+                }
+
+                It 'Contains the same function names as base file names' {
+                    Compare-Object -ReferenceObject $PS1FileNames -DifferenceObject $ExportedFunctions |
+                    Should BeNullOrEmpty
+                }
         
+            }
+    
+        }
+
     }
 
 }
