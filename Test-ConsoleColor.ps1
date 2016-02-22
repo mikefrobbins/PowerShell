@@ -1,4 +1,5 @@
-﻿#Requires -Version 3.0 -Modules Pscx
+﻿#Requires -Version 3.0
+#Add 'Requires -Modules Pscx' if used without the script module
 function Test-ConsoleColor {
 
 <#

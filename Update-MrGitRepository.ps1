@@ -1,4 +1,5 @@
-﻿#Requires -Version 4.0 -Modules Posh-Git
+﻿#Requires -Version 4.0
+#Add 'Requires -Modules Posh-Git' if used without the script module
 function Update-MrGitRepository {
 
     [CmdletBinding(SupportsShouldProcess,
