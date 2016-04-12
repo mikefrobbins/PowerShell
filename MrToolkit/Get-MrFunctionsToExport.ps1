@@ -14,7 +14,9 @@
 
         [string]$Exclude = '*profile.ps1',
 
-        [switch]$Recurse
+        [switch]$Recurse,
+
+        [switch]$Simple
     )
 
     $Params = @{
@@ -25,11 +27,15 @@
         $Params.Recurse = $true
     }
 
-    $results = (Get-ChildItem -Path "$Path\*.ps1" @Params |
-    Select-Object -ExpandProperty BaseName) -join "', '"
-        
-    if ($results) {
+    $results = Get-ChildItem -Path "$Path\*.ps1" @Params |
+               Select-Object -ExpandProperty BaseName    
+    
+    if ((-not($PSBoundParameters.Simple)) -and $results) {
+        $results = $results -join "', '"
         Write-Output "'$results'"
+    }        
+    elseif ($results) {
+        Write-Output $results
     }
     
 }
