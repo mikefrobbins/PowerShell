@@ -1,6 +1,36 @@
 ﻿#Requires -Version 3.0
 #Add 'Requires -Modules Pester' if used without the script module
 function Test-MrFunctionsToExport {
+
+<#
+.SYNOPSIS
+    Tests that all functions in a module are being exported.
+ 
+.DESCRIPTION
+    Test-MrFunctionsToExport is an advanced function that runs a Pester test against
+    one or more modules to validate that all functions are being properly exported.
+ 
+.PARAMETER ManifestPath
+    Path to the module manifest (PSD1) file for the modules(s) to test.
+
+.EXAMPLE
+    Test-MrFunctionsToExport -ManifestPath .\MyModuleManifest.psd1
+
+.EXAMPLE
+    Get-ChildItem -Path .\Modules -Include *.psd1 -Recurse | Test-MrFunctionsToExport
+
+.INPUTS
+    String
+ 
+.OUTPUTS
+    None
+ 
+.NOTES
+    Author:  Mike F Robbins
+    Website: http://mikefrobbins.com
+    Twitter: @mikefrobbins
+#>
+
     [CmdletBinding()]
     param (
         [Parameter(ValueFromPipeline)]
