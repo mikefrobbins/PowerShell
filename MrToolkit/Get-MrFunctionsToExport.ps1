@@ -14,7 +14,7 @@
     Path to the folder where the functions are located.
 
 .PARAMETER Exclude
-    Pattern to exclude. By default profile scripts are excluded.
+    Pattern to exclude. By default profile scripts and Pester tests are excluded.
 
 .PARAMETER Recurse
     Return function names from subdirectories in addition to the specified directory.
@@ -52,7 +52,7 @@
         })]
         [string]$Path = (Get-Location),
 
-        [string]$Exclude = '*profile.ps1',
+        [string[]]$Exclude = ('*profile.ps1', '*tests.ps1'),
 
         [switch]$Recurse,
 
