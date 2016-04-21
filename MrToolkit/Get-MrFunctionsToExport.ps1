@@ -5,7 +5,7 @@
     Returns a list of functions in the specified directory.
  
 .DESCRIPTION
-    Get-MrFunctionsToExport is an advanced function to returns a list of functions
+    Get-MrFunctionsToExport is an advanced function which returns a list of functions
     that are each contained in single quotes and each separated by a comma unless the
     simple parameter is specified in which case a simple list of the base file names
     for the functions is returned.
