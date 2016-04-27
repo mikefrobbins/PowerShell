@@ -139,7 +139,7 @@
                         $temp.Server = $c  
                         $temp.Port = $p  
                         $temp.TypePort = "TCP"  
-                        $temp.Open = "False"  
+                        $temp.Open = $False 
                         $temp.Notes = "Connection to Port Timed Out"  
                     } Else {  
                         $error.Clear()  
@@ -159,14 +159,14 @@
                             $temp.Server = $c  
                             $temp.Port = $p  
                             $temp.TypePort = "TCP"  
-                            $temp.Open = "False"  
+                            $temp.Open = $False 
                             $temp.Notes = "$message"  
                         } Else{  
                             #Build report  
                             $temp.Server = $c  
                             $temp.Port = $p  
                             $temp.TypePort = "TCP"  
-                            $temp.Open = "True"    
+                            $temp.Open = $True   
                             $temp.Notes = ""  
                         }  
                     }     
@@ -204,7 +204,7 @@
                             $temp.Server = $c  
                             $temp.Port = $p  
                             $temp.TypePort = "UDP"  
-                            $temp.Open = "True"  
+                            $temp.Open = $True 
                             $temp.Notes = $returndata   
                             $udpobject.close()   
                         }                       
@@ -219,7 +219,7 @@
                                 $temp.Server = $c  
                                 $temp.Port = $p  
                                 $temp.TypePort = "UDP"  
-                                $temp.Open = "True"  
+                                $temp.Open = $True 
                                 $temp.Notes = "" 
                             } Else { 
                                 <# 
@@ -231,7 +231,7 @@
                                 $temp.Server = $c  
                                 $temp.Port = $p  
                                 $temp.TypePort = "UDP"  
-                                $temp.Open = "False"  
+                                $temp.Open = $False 
                                 $temp.Notes = "Unable to verify if port is open or if host is unavailable."                                 
                             }                         
                         } ElseIf ($Error[0].ToString() -match "forcibly closed by the remote host" ) { 
@@ -242,7 +242,7 @@
                             $temp.Server = $c  
                             $temp.Port = $p  
                             $temp.TypePort = "UDP"  
-                            $temp.Open = "False"  
+                            $temp.Open = $False 
                             $temp.Notes = "Connection to Port Timed Out"                         
                         } Else {                      
                             $udpobject.close() 
