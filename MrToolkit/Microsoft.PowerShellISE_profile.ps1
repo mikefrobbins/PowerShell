@@ -1,0 +1,1 @@
+﻿$psISE.Options.Zoom = 100
