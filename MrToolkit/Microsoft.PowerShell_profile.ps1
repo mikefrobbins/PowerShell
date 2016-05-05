@@ -8,7 +8,7 @@ if (Test-NetConnection -ComputerName bing.com -Port 80 -InformationLevel Quiet -
 
     while ($Date.DayOfWeek -ne 'Tuesday') {$Date = $Date.AddDays(1)}
     if ($Date.ToShortDateString() -eq $Now.ToShortDateString()) {
-        Update-Module -Force
+        Update-Module
         Update-Help -ErrorAction SilentlyContinue
     }
 
