@@ -44,7 +44,7 @@ function Invoke-MrTDDWorkflow {
               
         }
         else {
-            Write-Output "Write code until unit test: '$($Results.TestResult.Where({$_.Passed -eq $false}, 'First', 1).Name)' passes"
+            Write-Output "Write code until unit test: '$(@($Results.TestResult).Where({$_.Passed -eq $false}, 'First', 1).Name)' passes"
             Start-Sleep -Seconds $Seconds
             Clear-Host
         }    
