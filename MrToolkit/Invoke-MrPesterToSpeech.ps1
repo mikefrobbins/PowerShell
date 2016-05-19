@@ -1,4 +1,5 @@
-﻿function Invoke-MrPesterToSpeech {
+﻿#Requires -Version 3.0 -Modules Pester
+function Invoke-MrPesterToSpeech {
     [CmdletBinding()]
     param (
         [switch]$Quiet

@@ -1,5 +1,4 @@
-﻿#Requires -Version 3.0
-#Add 'Requires -Modules Hyper-V' if used without the script module
+﻿#Requires -Version 3.0 -Modules Hyper-V
 function Get-MrVHDChain {
     [CmdletBinding()]
     param(

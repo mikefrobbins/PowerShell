@@ -1,5 +1,4 @@
-﻿#Requires -Version 4.0
-#Add 'Requires -Modules Posh-Git' if used without the script module
+﻿#Requires -Version 4.0 -Modules Posh-Git
 function Get-MrGitStatus {
     [CmdletBinding()]
     param ()
