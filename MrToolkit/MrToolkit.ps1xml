@@ -76,5 +76,57 @@
                 </ListEntries>
             </ListControl>
         </View>
+        <View>
+            <Name>Mr.RepositoryInfo</Name>
+            <ViewSelectedBy>
+                <TypeName>Mr.ModuleUpdate</TypeName>
+            </ViewSelectedBy>
+            <TableControl>
+                <TableHeaders>
+                     <TableColumnHeader>
+                        <Width>30</Width>
+                    </TableColumnHeader>                   
+                    <TableColumnHeader>
+                        <Width>16</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>17</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>10</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>17</Width>
+                    </TableColumnHeader>
+                    <TableColumnHeader>
+                        <Width>23</Width>
+                    </TableColumnHeader>
+                </TableHeaders>
+                <TableRowEntries>
+                    <TableRowEntry>
+                        <TableColumnItems>
+                            <TableColumnItem>
+                                <PropertyName>Name</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>InstalledVersion</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>InstalledLocation</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>Repository</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>RepositoryVersion</PropertyName>
+                            </TableColumnItem>
+                            <TableColumnItem>
+                                <PropertyName>InstalledFromRepository</PropertyName>
+                            </TableColumnItem>
+                        </TableColumnItems>
+                    </TableRowEntry>
+                 </TableRowEntries>
+            </TableControl>
+        </View>
     </ViewDefinitions>
 </Configuration>
