@@ -77,7 +77,7 @@
             </ListControl>
         </View>
         <View>
-            <Name>Mr.RepositoryInfo</Name>
+            <Name>Mr.ModuleUpdate</Name>
             <ViewSelectedBy>
                 <TypeName>Mr.ModuleUpdate</TypeName>
             </ViewSelectedBy>
