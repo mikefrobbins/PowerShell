@@ -1,4 +1,5 @@
-﻿function Find-MrModuleUpdate {
+﻿#Requires -Version 3.0 -Modules PowerShellGet
+function Find-MrModuleUpdate {
     [CmdletBinding()]
     [OutputType('Mr.ModuleUpdate')]
     param (
