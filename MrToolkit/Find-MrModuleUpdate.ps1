@@ -1,5 +1,45 @@
 ﻿#Requires -Version 3.0 -Modules PowerShellGet
 function Find-MrModuleUpdate {
+
+<#
+.SYNOPSIS
+    Finds updates for installed modules from an online gallery that matches the specified criteria.
+ 
+.DESCRIPTION
+    Find-MrModuleUpdate is a PowerShell advanced function that finds updates from an online gallery for locally installed modules
+    regardless of whether or not they were originally installed from an online gallery or from the same online gallery where the
+    update is found. 
+ 
+.PARAMETER Name
+    Specifies the names of one or more modules to search for.
+
+.PARAMETER Scope
+    Specifies the search scope of the installed modules. The acceptable values for this parameter are: AllUsers and CurrentUser.
+ 
+.EXAMPLE
+     Find-MrModuleUpdate
+
+.EXAMPLE
+     Find-MrModuleUpdate -Name PSScriptAnalyzer, PSVersion
+
+.EXAMPLE
+     Find-MrModuleUpdate -Scope CurrentUser
+
+.EXAMPLE
+     Find-MrModuleUpdate -Name PSScriptAnalyzer, PSVersion -Scope CurrentUser
+ 
+.INPUTS
+    None
+ 
+.OUTPUTS
+    Mr.ModuleUpdate
+ 
+.NOTES
+    Author:  Mike F Robbins
+    Website: http://mikefrobbins.com
+    Twitter: @mikefrobbins
+#>
+
     [CmdletBinding()]
     [OutputType('Mr.ModuleUpdate')]
     param (
