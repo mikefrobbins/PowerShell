@@ -1,4 +1,5 @@
-﻿function New-MrFunction {
+﻿#Requires -Modules Pester
+function New-MrFunction {
     [CmdletBinding()]
     param (
         [string]$Name,
