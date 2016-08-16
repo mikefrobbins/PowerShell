@@ -39,8 +39,7 @@ function Test-MrVMBackupRequirement {
         [Alias('VMHost')]
         [string]$ComputerName,
 
-        [Parameter(Mandatory,
-            ValueFromPipeline)]
+        [Parameter(ValueFromPipeline)]
         [string[]]$VMName,
 
         [System.Management.Automation.Credential()]$Credential = [System.Management.Automation.PSCredential]::Empty
@@ -52,7 +51,14 @@ function Test-MrVMBackupRequirement {
         }
         catch {
             Throw "Unable to connect to Hyper-V host '$ComputerName'. Aborting Pester tests."
-        } 
+        }
+
+        if (-not($PSBoundParameters.VMName)) {
+            $VMName = (Invoke-Command -Session $HostSession {
+                Get-VM | Select-Object -Property Name
+            }).Name
+        }
+
     }
     
     PROCESS {
@@ -80,11 +86,11 @@ function Test-MrVMBackupRequirement {
                 }
                 
                 $VMInfo = Invoke-Command -Session $HostSession {
-                    Get-VM -Name $Using:VM | Select-Object -Property IntegrationServicesState, State
+                    Get-VM -Name $Using:VM #| Select-Object -Property IntegrationServicesState, State
                 }
 
                 It 'Should have the latest Integration Services version installed' {
-                    ($VMInfo).IntegrationServicesState -eq 'Up to date' |
+                    $VMInfo.IntegrationServicesState -eq 'Up to date' |
                     Should Be $true
                 }
 
@@ -96,7 +102,7 @@ function Test-MrVMBackupRequirement {
                 }
 
                 It 'Should be running' {
-                    ($VMInfo).State |
+                    $VMInfo.State |
                     Should Be 'Running'
                 }
 
@@ -160,7 +166,7 @@ function Test-MrVMBackupRequirement {
 
                 It 'Should not have any App-V drives installed on the VM' {
                     #App-V drives installed on the VM creates a non-NTFS volume.
-                    ($GuestDiskInfo).filesystem |
+                    $GuestDiskInfo.filesystem |
                     Should Be 'NTFS'
                 }
 
@@ -171,7 +177,7 @@ function Test-MrVMBackupRequirement {
                 }
         
                 It 'Should have all volumes formated with NTFS in the guest OS' {
-                    ($GuestDiskInfo).filesystem |
+                    $GuestDiskInfo.filesystem |
                     Should Be 'NTFS'
                 }        
 
