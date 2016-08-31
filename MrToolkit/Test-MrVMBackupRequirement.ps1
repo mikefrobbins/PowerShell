@@ -3,7 +3,7 @@ function Test-MrVMBackupRequirement {
 
 <#
 .SYNOPSIS
-    Tests the requirements for live backups of a Hyper-V Guest VM for use with Altaro VMBackup.
+    Tests the requirements for live backups of a Hyper-V Guest VM for use with Altaro VM Backup.
  
 .DESCRIPTION
     Test the requirements for live backups of a Hyper-V Guest VM as defined in this Altaro support article:
@@ -86,7 +86,7 @@ function Test-MrVMBackupRequirement {
                 }
                 
                 $VMInfo = Invoke-Command -Session $HostSession {
-                    Get-VM -Name $Using:VM #| Select-Object -Property IntegrationServicesState, State
+                    Get-VM -Name $Using:VM | Select-Object -Property IntegrationServicesState, State
                 }
 
                 It 'Should have the latest Integration Services version installed' {
@@ -102,7 +102,7 @@ function Test-MrVMBackupRequirement {
                 }
 
                 It 'Should be running' {
-                    $VMInfo.State |
+                    $VMInfo.State.Value |
                     Should Be 'Running'
                 }
 
@@ -187,7 +187,7 @@ function Test-MrVMBackupRequirement {
                     }).path -replace '\\.*$'
 
                     $HostDiskInfo = Invoke-Command -Session $HostSession {
-                        Get-WMIObject -Class Win32_Volume -Filter 'DriveType = 3' -Property Capacity, DriveLetter, FileSystem, FreeSpace, Label            
+                        Get-WMIObject -Class Win32_Volume -Filter 'DriveType = 3' -Property DriveLetter, FileSystem            
                     }
 
                     ($HostDiskLetter | ForEach-Object {$HostDiskInfo | Where-Object DriveLetter -eq $_}).filesystem |
@@ -214,7 +214,7 @@ function Test-MrVMBackupRequirement {
                             Get-WmiObject -Class Win32_Service -Filter "DisplayName = 'COM+ System Application' or DisplayName = 'Microsoft Software Shadow Copy Provider' or DisplayName = 'Volume Shadow Copy'"
                     }).StartMode
                     
-                    $StartMode -eq 'Manual' -or $StartMode -eq 'Automatic' |
+                    $StartMode | ForEach-Object {$_ -eq 'Manual' -or $_ -eq 'Automatic'} |
                     Should Be $true
                     
                 }
