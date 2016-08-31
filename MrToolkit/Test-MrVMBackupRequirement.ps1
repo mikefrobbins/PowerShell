@@ -53,18 +53,24 @@ function Test-MrVMBackupRequirement {
             Throw "Unable to connect to Hyper-V host '$ComputerName'. Aborting Pester tests."
         }
 
+        $VMs = (Invoke-Command -Session $HostSession {
+            Get-VM | Select-Object -Property Name
+        }).Name
+        
         if (-not($PSBoundParameters.VMName)) {
-            $VMName = (Invoke-Command -Session $HostSession {
-                Get-VM | Select-Object -Property Name
-            }).Name
+            $VMName = $VMs
         }
 
     }
     
     PROCESS {
         foreach ($VM in $VMName) {
-
             Describe "Validation of Altaro VM Backup Requirements for Live Backups of Hyper-V Guest VM: '$VM'" {
+
+                if ($VM -notin $VMs) {
+                    Write-Warning -Message "The VM: '$VM' does not exist on the Hyper-V host: '$ComputerName'"
+                    Continue
+                }
 
                 try {
                     $GuestSession = New-PSSession -ComputerName $VM -Credential $Credential -ErrorAction Stop
@@ -72,7 +78,7 @@ function Test-MrVMBackupRequirement {
                 catch {
                     Write-Warning -Message "Unable to connect. Aborting Pester tests for computer: '$VM'."
                     Continue
-                } 
+                }
         
                 $SupportedGuestOS = '2008 R2', 'Server 2012', 'Server 2012 R2'
 
@@ -155,7 +161,9 @@ function Test-MrVMBackupRequirement {
                     Invoke-Command -Session $GuestSession {
                         $Results = vssadmin.exe list shadowstorage | Select-String -SimpleMatch 'For Volume', 'Shadow Copy Storage volume'
                         if ($Results) {
-                            ($Results[0] -split 'volume:')[1].trim() -eq ($Results[1] -split 'volume:')[1].trim()                        
+                            for ($i = 0; $i -lt $Results.Count; $i+=2){
+                                ($Results[$i] -split 'volume:')[1].trim() -eq ($Results[$i+1] -split 'volume:')[1].trim() 
+                            }                                                   
                         }
                         else {
                             $true
