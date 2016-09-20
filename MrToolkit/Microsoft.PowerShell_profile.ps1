@@ -19,10 +19,10 @@ if (Test-NetConnection -ComputerName bing.com -Port 80 -InformationLevel Quiet -
 
                 New-Item -Path $PSLUPath -ItemType File -Force
                 
-                Start-Job {
+                $null = Start-Job {
                     Update-Module -Force
                     Update-Help -ErrorAction SilentlyContinue
-                } | Out-Null
+                }
 
             }
             else {
