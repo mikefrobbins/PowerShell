@@ -17,7 +17,7 @@ if (Test-NetConnection -ComputerName bing.com -Port 80 -InformationLevel Quiet -
 
             if ((New-Object System.Security.Principal.WindowsPrincipal([System.Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([System.Security.Principal.WindowsBuiltInRole]::Administrator)) {
 
-                New-Item -Path $PSLUPath -ItemType File -Force
+                New-Item -Path $PSLUPath -ItemType File -Force | Out-Null
                 
                 Start-Job {
                     Update-Module -Force
