@@ -7,7 +7,7 @@ function Get-MrAvailableDriveLetter {
  
 .DESCRIPTION
     Get-MrAvailableDriveLetter is an advanced PowerShell function that returns one or more available
-    drive leters depending on the specified parameters.
+    drive letters depending on the specified parameters.
  
 .PARAMETER ExcludeDriveLetter
     Drive letter(s) to exclude regardless if they're available or not. The default excludes drive letters
