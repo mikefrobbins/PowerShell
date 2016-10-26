@@ -22,7 +22,7 @@ function Test-MrIpAddress {
      Test-MrIpAddress -IpAddress '192.168.0.1' -Detailed
 
 .EXAMPLE
-     '192.168.0.1', '192.168.0.256' | Test-MrIpAddress
+     '::1', '192.168.0.256' | Test-MrIpAddress
 
 .INPUTS
     String
