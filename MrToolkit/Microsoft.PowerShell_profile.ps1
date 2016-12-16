@@ -31,11 +31,10 @@ if (Test-NetConnection -ComputerName bing.com -Port 80 -InformationLevel Quiet -
 
         }
 
-    }   
-
+    }
     
     try {
-        $Book = Invoke-WebRequest -Uri https://www.packtpub.com/packt/offers/free-learning/ -ErrorAction Stop
+        $Book = (Invoke-WebRequest -Uri https://www.packtpub.com/packt/offers/free-learning/ -ErrorAction Stop).ParsedHtml.getElementsByTagName('H2')[0].InnerHTML.Trim()  
     }
     catch [System.NotSupportedException] {
         Write-Warning -Message "Internet Explorer engine not available or its first-launch configuration is not complete."
@@ -44,9 +43,9 @@ if (Test-NetConnection -ComputerName bing.com -Port 80 -InformationLevel Quiet -
         Write-Warning -Message 'An unknown error has occurred.'
     }
 
-    if ($Book) {
+    if ($Book -and ($Book -ne 'Contact Us')) {
         Write-Host 'The Packt Publishing free learning eBook of the day is: ' -ForegroundColor Cyan -NoNewline
-        Write-Host "'$($Book.ParsedHtml.getElementsByTagName('H2')[0].InnerHTML.Trim())'" -ForegroundColor Yellow    
+        Write-Host "'$Book'" -ForegroundColor Yellow
     }
 
 }
