@@ -152,7 +152,9 @@ function Test-MrVMBackupRequirement {
         
                 It 'Should have a SCSI controller attached in the VM settings' {
                     Invoke-Command -Session $HostSession {
-                        Get-VM -Name $Using:VM | Get-VMScsiController
+                        if (Get-VM -Name $Using:VM | Get-VMScsiController) {
+                            $true
+                        }
                     } |
                     Should Be $true
                 }
@@ -174,8 +176,10 @@ function Test-MrVMBackupRequirement {
 
                 It 'Should not have any App-V drives installed on the VM' {
                     #App-V drives installed on the VM creates a non-NTFS volume.
-                    $GuestDiskInfo.filesystem |
-                    Should Be 'NTFS'
+                    $GuestDiskInfo.filesystem | ForEach-Object {
+                        $_ | Should Be 'NTFS'
+                    }
+                    
                 }
 
                 It 'Should have at least 45MB of free space on system reserved partition if one exists in the guest OS' {
@@ -185,8 +189,9 @@ function Test-MrVMBackupRequirement {
                 }
         
                 It 'Should have all volumes formated with NTFS in the guest OS' {
-                    $GuestDiskInfo.filesystem |
-                    Should Be 'NTFS'
+                    $GuestDiskInfo.filesystem | ForEach-Object {
+                        $_ | Should Be 'NTFS'
+                    }
                 }        
 
                 It 'Should have volume containing VHD files formated with NTFS' {
@@ -208,13 +213,16 @@ function Test-MrVMBackupRequirement {
                         Get-WmiObject -Class Win32_DiskPartition -Property Type |
                         ForEach-Object {$DynamicDisk -contains $_.Type}
                     } |
-                    Should Be $false
+                    ForEach-Object {
+                        $_ | Should Be $false
+                    }
                 }
 
                 It 'Should be running specific services within the VM' {
                     $RunningServices = 'COM+ Event System', 'Distributed Transaction Coordinator', 'Remote Procedure Call (RPC)', 'System Event Notification Service'
-                    ($GuestServiceInfo | Where-Object DisplayName -in $RunningServices).status |
-                    Should Be 'Running'
+                    ($GuestServiceInfo | Where-Object DisplayName -in $RunningServices).status | ForEach-Object {
+                        $_ | Should Be 'Running'
+                    }
                 }
 
                 It 'Should have specific services set to manual or automatic within the VM' {
@@ -223,7 +231,9 @@ function Test-MrVMBackupRequirement {
                     }).StartMode
                     
                     $StartMode | ForEach-Object {$_ -eq 'Manual' -or $_ -eq 'Automatic'} |
-                    Should Be $true
+                    ForEach-Object {
+                        $_ | Should Be $true
+                    }
                     
                 }
 
