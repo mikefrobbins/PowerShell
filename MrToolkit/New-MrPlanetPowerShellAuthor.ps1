@@ -1,5 +1,68 @@
 ﻿#Requires -Version 3.0 -Modules MrGeo
 function New-MrPlanetPowerShellAuthor {
+
+<#
+.SYNOPSIS
+    Creates the author information required to add your PowerShell related blog to Planet PowerShell.
+ 
+.DESCRIPTION
+    New-MrPlanetPowerShellAuthor is an advanced function that creates the author information required
+    to add your PowerShell related blog to Planet PowerShell (http://www.planetpowershell.com/). Planet
+    PowerShell is an aggregator of content from PowerShell Community members.
+ 
+.PARAMETER FirstName
+    Author's first name.
+
+.PARAMETER LastName
+    Author's last name.
+
+.PARAMETER Bio
+    Short bio about the author.
+
+.PARAMETER StateOrRegion
+    Your geographical location, i.e.: Holland, New York, etc.
+
+.PARAMETER EmailAddress
+    Email address. Only enter if you want your email address to be publically available.
+
+.PARAMETER TwitterHandle
+    TwitterHandle without the leading @.
+
+.PARAMETER GravatarEmailAddress
+    The email address you use at gravatar.com. Entering this causes the picture used at Gravatar.com to
+    be used as your author picture on Planet PowerShell. The email address is converted to the MD5 hash
+    of the email address string.
+
+.PARAMETER GitHubHandle
+    GitHubHandle without the leading @.
+
+.PARAMETER BlogUri
+    URL of your blog site.
+
+.PARAMETER RssUri
+    URL for the RSS feed to your blog site.
+
+.PARAMETER MicrosoftMVP
+    Switch parameter. Specify if you're a Microsoft MVP.
+
+.PARAMETER FilterToPowerShell
+    Switch parameter. Specify if you blog on more than just PowerShell.
+
+.EXAMPLE
+     New-MrFunction -Name Get-MrPSVersion -Path "$env:ProgramFiles\WindowsPowerShell\Modules\MyModule"
+
+.INPUTS
+    None
+ 
+.OUTPUTS
+    System.IO.FileInfo
+ 
+.NOTES
+    Author:  Mike F Robbins
+    Website: http://mikefrobbins.com
+    Twitter: @mikefrobbins
+#>
+
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
