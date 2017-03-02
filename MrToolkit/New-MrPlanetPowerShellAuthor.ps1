@@ -23,10 +23,10 @@ function New-MrPlanetPowerShellAuthor {
     Your geographical location, i.e.: Holland, New York, etc.
 
 .PARAMETER EmailAddress
-    Email address. Only enter if you want your email address to be publically available.
+    Email address. Only enter if you want your email address to be publicly available.
 
 .PARAMETER TwitterHandle
-    TwitterHandle without the leading @.
+    Twitter handle without the leading @.
 
 .PARAMETER GravatarEmailAddress
     The email address you use at gravatar.com. Entering this causes the picture used at Gravatar.com to
@@ -34,7 +34,7 @@ function New-MrPlanetPowerShellAuthor {
     of the email address string.
 
 .PARAMETER GitHubHandle
-    GitHubHandle without the leading @.
+    GitHub handle without the leading @.
 
 .PARAMETER BlogUri
     URL of your blog site.
@@ -49,7 +49,7 @@ function New-MrPlanetPowerShellAuthor {
     Switch parameter. Specify if you blog on more than just PowerShell.
 
 .EXAMPLE
-    New-MrPlanetPowerShellAuthor -FirstName Mike -LastName Robbins -Bio 'Microsoft MVP' -StateOrRegion MS -TwitterHandle mikefrobbins -GravatarEmailAddress mikefrobbins@users.noreply.github.com -GitHubHandle mikefrobbins -BlogUri mikefrobbins.com -RssUri mikefrobbins.com/feed -MicrosoftMVP -FilterToPowerShell |
+    New-MrPlanetPowerShellAuthor -FirstName Mike -LastName Robbins -Bio 'Microsoft PowerShell MVP and SAPIEN Technologies MVP. Leader & Co-founder of MSPSUG' -StateOrRegion 'Mississippi, USA' -TwitterHandle mikefrobbins -GravatarEmailAddress mikefrobbins@users.noreply.github.com -GitHubHandle mikefrobbins -BlogUri mikefrobbins.com -RssUri mikefrobbins.com/feed -MicrosoftMVP -FilterToPowerShell |
     New-Item -Path C:\GitHub\planetpowershell\src\Firehose.Web\Authors\MikeRobbins.cs
 
 .INPUTS
