@@ -49,7 +49,7 @@ function New-MrPlanetPowerShellAuthor {
     Switch parameter. Specify if you blog on more than just PowerShell.
 
 .EXAMPLE
-    New-MrPlanetPowerShellAuthor -FirstName Mike -LastName Robbins -Bio 'Microsoft MVP' -StateOrRegion MS -TwitterHandle mikefrobbins -GravatarEmailAddress mikefrobbins@gmail.com -GitHubHandle mikefrobbins -BlogUri mikefrobbins.com -RssUri mikefrobbins.com/feed -MicrosoftMVP -FilterToPowerShell |
+    New-MrPlanetPowerShellAuthor -FirstName Mike -LastName Robbins -Bio 'Microsoft MVP' -StateOrRegion MS -TwitterHandle mikefrobbins -GravatarEmailAddress mikefrobbins@users.noreply.github.com -GitHubHandle mikefrobbins -BlogUri mikefrobbins.com -RssUri mikefrobbins.com/feed -MicrosoftMVP -FilterToPowerShell |
     New-Item -Path C:\GitHub\planetpowershell\src\Firehose.Web\Authors\MikeRobbins.cs
 
 .INPUTS
