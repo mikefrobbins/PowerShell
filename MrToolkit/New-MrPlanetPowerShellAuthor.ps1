@@ -55,7 +55,7 @@ function New-MrPlanetPowerShellAuthor {
     None
  
 .OUTPUTS
-    System.IO.FileInfo
+    System.String
  
 .NOTES
     Author:  Mike F Robbins
