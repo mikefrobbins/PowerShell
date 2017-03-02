@@ -49,7 +49,8 @@ function New-MrPlanetPowerShellAuthor {
     Switch parameter. Specify if you blog on more than just PowerShell.
 
 .EXAMPLE
-     New-MrFunction -Name Get-MrPSVersion -Path "$env:ProgramFiles\WindowsPowerShell\Modules\MyModule"
+    New-MrPlanetPowerShellAuthor -FirstName Mike -LastName Robbins -Bio 'Microsoft MVP' -StateOrRegion MS -TwitterHandle mikefrobbins -GravatarEmailAddress mikefrobbins@gmail.com -GitHubHandle mikefrobbins -BlogUri mikefrobbins.com -RssUri mikefrobbins.com/feed -MicrosoftMVP -FilterToPowerShell |
+    New-Item -Path C:\GitHub\planetpowershell\src\Firehose.Web\Authors\MikeRobbins.cs
 
 .INPUTS
     None
