@@ -1,4 +1,4 @@
-﻿#Requires -Version 3.0 -Modules MrGeo
+﻿#Requires -Version 3.0
 function New-MrPlanetPowerShellAuthor {
 
 <#
