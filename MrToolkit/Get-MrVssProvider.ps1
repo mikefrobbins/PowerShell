@@ -1,5 +1,6 @@
 ﻿#Requires -Version 3.0
 function Get-MrVssProvider {
+
 <#
 .SYNOPSIS
     Retrieves a list of the VSS providers that are installed on the specified computer(s).
