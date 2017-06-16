@@ -51,7 +51,7 @@ function Find-MrModuleUpdate {
     )
 
     $AllUsersPath = "$env:ProgramFiles\WindowsPowerShell\Modules\*"
-    $CurrentUserPath = "$env:USERPROFILE\Documents\WindowsPowerShell\Modules\*"
+    $CurrentUserPath = [Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments) + "\*"
 
     switch ($Scope) {
         'AllUsers' {$Path = $AllUsersPath; break}
