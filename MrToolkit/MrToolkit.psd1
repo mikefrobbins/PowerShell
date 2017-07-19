@@ -12,7 +12,7 @@
 RootModule = 'MrToolkit'
 
 # Version number of this module.
-ModuleVersion = '1.2'
+ModuleVersion = '1.3'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -69,13 +69,14 @@ FormatsToProcess = 'MrToolkit.ps1xml'
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = 'ConvertTo-MrHashtable', 'Expand-MrZipFile', 'Find-MrModuleUpdate', 'Get-MrAutoService', 'Get-MrAutoStoppedService', 'Get-MrAvailableDriveLetter',
-                    'Get-MrDayLightSavingTime', 'Get-MrEsetUpdateVersion', 'Get-MrExceptionType', 'Get-MrFunctionsToExport', 'Get-MrGeoInformation', 'Get-MrGitHubRepositoryInfo',
-                    'Get-MrGitStatus', 'Get-MrHash', 'Get-MrLeapYear', 'Get-MrLeapYear2', 'Get-MrParameterAlias', 'Get-MrPipelineInput', 'Get-MrRemotePSSession', 'Get-MrSavedCredential',
-                    'Get-MrScheduledTask', 'Get-MrUptime', 'Get-MrVHDChain', 'Get-MrVmHost', 'Get-MrVssProvider', 'Get-MSPSUGMeetingDate', 'Get-Type', 'Invoke-MrPesterToSpeech',
-                    'Invoke-MrTDDWorkflow', 'New-MrCimSession', 'New-MrFunction', 'New-MrPlanetPowerShellAuthor', 'New-MrScriptModule', 'Out-MrReverseString', 'Out-MrSpeech',
-                    'Remove-MrSavedCredential', 'Restart-MrServiceOrDie', 'Start-MrAutoStoppedService', 'Stop-MrPendingService', 'Test-ConsoleColor', 'Test-MrFunctionsToExport',
-                    'Test-MrIpAddress', 'Test-MrURL', 'Test-MrVMBackupRequirement', 'Test-Port', 'Update-MrGitRepository'
+FunctionsToExport = 'Add-MrStartupVariable', 'ConvertTo-MrHashtable', 'Expand-MrZipFile', 'Find-MrModuleUpdate', 'Get-MrAutoService', 'Get-MrAutoStoppedService',
+                    'Get-MrAvailableDriveLetter', 'Get-MrDayLightSavingTime', 'Get-MrEsetUpdateVersion', 'Get-MrExceptionType', 'Get-MrFunctionsToExport',
+                    'Get-MrGeoInformation', 'Get-MrGitHubRepositoryInfo', 'Get-MrGitStatus', 'Get-MrHash', 'Get-MrLeapYear', 'Get-MrLeapYear2', 'Get-MrParameterAlias',
+                    'Get-MrPipelineInput', 'Get-MrRemotePSSession', 'Get-MrSavedCredential', 'Get-MrScheduledTask', 'Get-MrUptime', 'Get-MrVHDChain', 'Get-MrVmHost',
+                    'Get-MrVssProvider', 'Get-MSPSUGMeetingDate', 'Get-Type', 'Invoke-MrPesterToSpeech', 'Invoke-MrTDDWorkflow', 'New-MrCimSession', 'New-MrFunction',
+                    'New-MrPlanetPowerShellAuthor', 'New-MrScriptModule', 'Out-MrReverseString', 'Out-MrSpeech', 'Remove-MrSavedCredential', 'Remove-MrUserVariable',
+                    'Restart-MrServiceOrDie', 'Start-MrAutoStoppedService', 'Stop-MrPendingService', 'Test-ConsoleColor', 'Test-MrFunctionsToExport', 'Test-MrIpAddress',
+                    'Test-MrURL', 'Test-MrVMBackupRequirement', 'Test-Port', 'Update-MrGitRepository'
                     
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
