@@ -51,3 +51,6 @@ if (Test-NetConnection -ComputerName bing.com -Port 80 -InformationLevel Quiet -
 }
 
 $Global:ProgressPreference = 'Continue'
+
+$StartupVars = @()
+$StartupVars = Get-Variable | Select-Object -ExpandProperty Name
