@@ -22,7 +22,7 @@ function Invoke-MrTDDWorkflow {
 
     while (-not $Complete) {       
     
-        if ((Invoke-Pester -Script $Path -Quiet -PassThru -OutVariable Results).FailedCount -eq 0) {
+        if ((Invoke-Pester -Script $Path -Show None -PassThru -OutVariable Results).FailedCount -eq 0) {
 
             if ([System.Windows.Forms.MessageBox]::Show('Is the code complete?', 'Status', 4, 'Question', 'Button2') -eq 'Yes') {
                 $Complete = $true
