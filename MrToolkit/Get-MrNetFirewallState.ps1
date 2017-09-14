@@ -51,7 +51,7 @@ function Get-MrNetFirewallState {
         New-Object PSObject -Property @{
             ComputerName = $env:COMPUTERNAME
             Name = ($Results[$i] | Select-String -SimpleMatch 'Profile Settings') -replace '^*.Profile Settings:'
-            Enabled = if (($Results[$i+1] | Select-String -SimpleMatch 'State') -replace '^.*State\W*' -eq 'ON') {
+            Enabled = if ($Results[$i+1] -match 'ON') {
                             $true
                         }
                         else {
