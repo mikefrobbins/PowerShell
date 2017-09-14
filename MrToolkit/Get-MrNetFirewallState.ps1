@@ -52,11 +52,11 @@ function Get-MrNetFirewallState {
             ComputerName = $env:COMPUTERNAME
             Name = ($Results[$i] | Select-String -SimpleMatch 'Profile Settings') -replace '^*.Profile Settings:'
             Enabled = if ($Results[$i+1] -match 'ON') {
-                            $true
-                        }
-                        else {
-                            $false
-                        }
+                          $true
+                      }
+                      else {
+                          $false
+                      }
         }
     }
 '@
