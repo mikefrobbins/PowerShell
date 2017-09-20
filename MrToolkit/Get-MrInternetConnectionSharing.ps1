@@ -60,7 +60,7 @@ function Get-MrInternetConnectionSharing {
             }
             catch {
                 Write-Warning -Message "An unexpected error has occurred for network adapter: '$Interface'"
-                Return
+                Continue
             }
 
             [pscustomobject]@{
