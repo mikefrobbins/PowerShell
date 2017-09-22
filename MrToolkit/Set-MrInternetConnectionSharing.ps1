@@ -47,23 +47,23 @@ function Set-MrInternetConnectionSharing {
                    ValueFromPipeline,
                    ValueFromPipelineByPropertyName)]
         [ValidateScript({
-                    If ((Get-NetAdapter -Name $_).status -ne 'Disabled') {
-                        $True
-                    }
-                    else {
-                        Throw "$_ is either not a valid network adapter of it's currently disabled."
-                    }
+            If ((Get-NetAdapter -Name $_ -ErrorAction SilentlyContinue -OutVariable INetNIC) -and (($INetNIC).Status -ne 'Disabled')) {
+                $True
+            }
+            else {
+                Throw "$_ is either not a valid network adapter of it's currently disabled."
+            }
         })]
         [Alias('Name')]
         [string]$InternetInterfaceName,
 
         [ValidateScript({
-                    If ((Get-NetAdapter -Name $_).status -ne 'Disabled') {
-                        $True
-                    }
-                    else {
-                        Throw "$_ is either not a valid network adapter of it's currently disabled."
-                    }
+            If ((Get-NetAdapter -Name $_ -ErrorAction SilentlyContinue -OutVariable LocalNIC) -and (($LocalNIC).Status -ne 'Disabled')) {
+                $True
+            }
+            else {
+                Throw "$_ is either not a valid network adapter of it's currently disabled."
+            }
         })]
         [string]$LocalInterfaceName,
 
