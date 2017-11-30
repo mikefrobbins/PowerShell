@@ -45,10 +45,10 @@ function Get-MrService {
         [Microsoft.Management.Infrastructure.CimSession[]]$CimSession
     )
 
-    $Params = @{}
+    $ServiceParams = @{}
 
     if ($PSBoundParameters.CimSession) {
-        $Params.CimSession = $CimSession
+        $ServiceParams.CimSession = $CimSession
     }    
 
     foreach ($n in $Name) {
@@ -56,13 +56,18 @@ function Get-MrService {
             $n = $n -replace '\*', '%'
         }
         
-        $Services = Get-CimInstance -ClassName Win32_Service -Filter "Name like '$n'" @Params
+        $Services = Get-CimInstance -ClassName Win32_Service -Filter "Name like '$n'" @ServiceParams
         
         foreach ($Service in $Services) {
-            $Params.CimSession = $CimSession | Where-Object ComputerName -eq $Service.SystemName
 
             if ($Service.ProcessId -ne 0) {
-                $Process = Get-CimInstance -ClassName Win32_Process -Filter "ProcessId = '$($Service.ProcessId)'"
+                $ProcessParams = @{}
+
+                if ($PSBoundParameters.CimSession) {
+                    $ProcessParams.CimSession = $CimSession | Where-Object ComputerName -eq $Service.SystemName
+                }
+
+                $Process = Get-CimInstance -ClassName Win32_Process -Filter "ProcessId = '$($Service.ProcessId)'" @ProcessParams
             }
             else {
                 $Process = ''
@@ -75,6 +80,7 @@ function Get-MrService {
                 DisplayName = $Service.DisplayName
                 StartTime = $Process.CreationDate
             }
+
         }
 
     }
