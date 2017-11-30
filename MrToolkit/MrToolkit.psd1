@@ -76,7 +76,7 @@ FunctionsToExport = 'Add-MrStartupVariable', 'ConvertTo-MrHashtable', 'Expand-Mr
                     'Get-MrVmHost', 'Get-MrVssProvider', 'Get-MSPSUGMeetingDate', 'Get-Type', 'Invoke-MrPesterToSpeech', 'Invoke-MrTDDWorkflow', 'New-MrCimSession',
                     'New-MrFunction', 'New-MrPlanetPowerShellAuthor', 'New-MrScriptModule', 'Out-MrReverseString', 'Out-MrSpeech', 'Remove-MrSavedCredential', 'Remove-MrUserVariable',
                     'Restart-MrServiceOrDie', 'Set-MrInternetConnectionSharing', 'Start-MrAutoStoppedService', 'Stop-MrPendingService', 'Test-ConsoleColor', 'Test-MrFunctionsToExport',
-                    'Test-MrIpAddress', 'Test-MrURL', 'Test-MrVMBackupRequirement', 'Test-Port', 'Update-MrGitRepository'
+                    'Test-MrIpAddress', 'Test-MrURL', 'Test-MrVMBackupRequirement', 'Test-Port', 'Update-MrGitRepository', 'Get-MrService'
                     
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
