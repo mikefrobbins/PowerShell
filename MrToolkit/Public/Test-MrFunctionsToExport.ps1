@@ -44,7 +44,7 @@ function Test-MrFunctionsToExport {
 
             $ModuleInfo = Import-Module -Name $Manifest -Force -PassThru
 
-            $PS1FileNames = Get-ChildItem -Path "$($ModuleInfo.ModuleBase)\*.ps1" -Exclude *tests.ps1, *profile.ps1 |
+            $PS1FileNames = Get-ChildItem -Path "$($ModuleInfo.ModuleBase)\functions\*.ps1" -Exclude *tests.ps1, *profile.ps1 |
                             Select-Object -ExpandProperty BaseName
 
             $ExportedFunctions = Get-Command -Module $ModuleInfo.Name |
