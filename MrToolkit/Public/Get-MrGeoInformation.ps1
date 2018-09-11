@@ -41,17 +41,14 @@ function Get-MrGeoInformation {
         [ipaddress[]]$IPAddress
     )
 
-    PROCESS { 
+    PROCESS {
 
-        if (-not($PSBoundParameters.IPAddress)) {
-            Write-Verbose -Message 'Attempting to retrieve Geolocation information for your public IP Address'
-            $Results = Invoke-RestMethod -Uri 'http://ip-api.com/json/' -TimeoutSec 30
-        }
-        else {
-            $Results = foreach ($IP in $IPAddress) {
-                Write-Verbose -Message "Attempting to retrieving Geolocation information for IP Address: '$IP'"
-                Invoke-RestMethod -Uri "http://ip-api.com/json/$IP" -TimeoutSec 30
-            }
+        $Results = foreach ($IP in $IPAddress) {
+            Write-Verbose -Message "Attempting to retrieving Geolocation information for IP Address: '$IP'"
+            Invoke-RestMethod -Uri "http://ip-api.com/json/$IP" -TimeoutSec 30
+            
+            #Thottle to prevent being banned. Maximum is 150 requests per minute.
+            Start-Sleep -Milliseconds 410
         }
 
         foreach ($Result in $Results) {
