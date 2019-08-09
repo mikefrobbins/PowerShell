@@ -87,7 +87,8 @@ FunctionsToExport = 'Add-MrStartupVariable', 'ConvertTo-MrHashtable', 'Expand-Mr
                'Remove-MrSavedCredential', 'Remove-MrUserVariable', 
                'Restart-MrServiceOrDie', 'Set-MrInternetConnectionSharing', 
                'Start-MrAutoStoppedService', 'Stop-MrPendingService', 
-               'Test-MrIpAddress', 'Test-MrURL', 'Test-Port', 'Update-MrGitRepository'
+               'Test-MrIpAddress', 'Test-MrURL', 'Test-Port', 'Update-MrGitRepository',
+               'Find-MrParameterAlias'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
