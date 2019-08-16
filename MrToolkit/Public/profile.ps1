@@ -35,3 +35,15 @@ if (-not($Error[0])) {
 else {
     Write-Warning -Message 'Unable to load the Posh-Git PowerShell Module'
 }
+
+$PSDefaultParameterValues += @{
+    'Out-Default:OutVariable' = 'LastResult'
+    'Out-File:Encoding' = 'utf8'
+    'Export-Csv:NoTypeInformation' = $true
+    'ConvertTo-Csv:NoTypeInformation' = $true
+    'Receive-Job:Keep' = $true
+    'Install-Module:AllowClobber' = $true
+    'Install-Module:Force' = $true
+    'Install-Module:SkipPublisherCheck' = $true
+    'Group-Object:NoElement' = $true
+}
