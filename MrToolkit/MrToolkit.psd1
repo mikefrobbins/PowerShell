@@ -70,24 +70,21 @@ FormatsToProcess = 'MrToolkit.ps1xml'
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = 'Add-MrStartupVariable', 'ConvertTo-MrHashtable', 'Expand-MrZipFile',
-               'Find-MrModuleUpdate', 'Get-MrAutoService',
-               'Get-MrAutoStoppedService', 'Get-MrAvailableDriveLetter',
-               'Get-MrDayLightSavingTime', 'Get-MrEsetUpdateVersion',
-               'Get-MrExceptionType', 'Get-MrGeoInformation', 'Get-MrHash',
-               'Get-MrInternetConnectionSharing', 'Get-MrLeapYear',
-               'Get-MrLeapYear2', 'Get-MrNetFirewallState', 'Get-MrOSInfo',
-               'Get-MrParameterAlias', 'Get-MrPipelineInput',
-               'Get-MrRemotePSSession', 'Get-MrSavedCredential',
-               'Get-MrScheduledTask', 'Get-MrService', 'Get-MrUptime',
-               'Get-MrVssProvider', 'Get-MSPSUGMeetingDate', 'Get-Type',
-               'Invoke-MrPesterToSpeech', 'Invoke-MrTDDWorkflow', 'New-DynamicParam',
-               'New-MrCimSession', 'New-MrFunction', 'New-MrPlanetPowerShellAuthor',
-               'New-MrScriptModule', 'Out-MrReverseString', 'Out-MrSpeech',
-               'Remove-MrSavedCredential', 'Remove-MrUserVariable',
-               'Restart-MrServiceOrDie', 'Set-MrInternetConnectionSharing',
-               'Start-MrAutoStoppedService', 'Stop-MrPendingService',
-               'Test-MrIpAddress', 'Test-MrURL', 'Test-Port', 'Update-MrGitRepository',
-               'Find-MrParameterAlias'
+                    'Find-MrModuleUpdate', 'Find-MrParameterAlias', 'Get-MrAutoService',
+                    'Get-MrAutoStoppedService', 'Get-MrAvailableDriveLetter',
+                    'Get-MrDayLightSavingTime', 'Get-MrEsetUpdateVersion', 'Get-MrExceptionType',
+                    'Get-MrGeoInformation', 'Get-MrHash', 'Get-MrInternetConnectionSharing',
+                    'Get-MrLeapYear', 'Get-MrLeapYear2', 'Get-MrNetFirewallState', 'Get-MrOSInfo',
+                    'Get-MrParameterAlias', 'Get-MrPathSeparator', 'Get-MrPipelineInput',
+                    'Get-MrRemotePSSession', 'Get-MrSavedCredential', 'Get-MrScheduledTask',
+                    'Get-MrService', 'Get-MrUptime', 'Get-MrVssProvider', 'Get-MSPSUGMeetingDate',
+                    'Get-Type', 'Invoke-MrPesterToSpeech', 'Invoke-MrTDDWorkflow',
+                    'New-DynamicParam', 'New-MrCimSession', 'New-MrFunction',
+                    'New-MrPlanetPowerShellAuthor', 'New-MrScriptModule', 'Out-MrReverseString',
+                    'Out-MrSpeech', 'Remove-MrSavedCredential', 'Remove-MrUserVariable',
+                    'Restart-MrServiceOrDie', 'Set-MrInternetConnectionSharing',
+                    'Start-MrAutoStoppedService', 'Stop-MrPendingService', 'Test-MrIpAddress',
+                    'Test-MrURL', 'Test-Port'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
